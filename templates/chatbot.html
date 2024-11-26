@@ -1,0 +1,37 @@
+{% extends "home.html" %}
+
+{% block title %}Chatbot{% endblock %}
+
+{% block content %}
+
+
+<div class="block-container">
+
+    <div class="block-structure-message">
+        <img src="/static/artificial.svg" class="artificial-logo">
+
+        <div class="block-message">
+            <p> {{ res_bot }}</p>
+            <audio controls src="{{ audio_src }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="block-structure-message2">
+
+            <form method="post" class="block-response">
+    
+                {% csrf_token %}
+                {{ pet }}
+    
+                <button type="submit" class="send-message"></button>
+            </form>
+    
+    </div>
+    
+</div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "home.html" %}
+
+{% block title %}Water{% endblock %}
+
+{% block content %}
+
+    <div class="block-water">
+        
+        <form method="post">
+
+            {% csrf_token %}
+            <h2> {{ paisW }}</h2>
+            <img src="https://openweathermap.org/img/wn/{{ logoW }}.png" class="description-logo">
+            <h2> {{ descripcionW }}</h2>
+            <h2> {{ temperaturaW }}</h2>
+            <h2> {{ humedadW }}</h2>
+
+            <button type="submit" class="send-water"></button>
+        </form>
+    </div>
+
+
+{% endblock %}

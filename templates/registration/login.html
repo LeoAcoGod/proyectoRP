@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Pagina Principal{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'login.css' %}">
+
+
+</head>
+
+
+<body>
+
+    <div class="login-main">
+
+      <img src="{% static 'water.svg' %}" class="main-logo">
+
+      <div class="login-container ">
+
+
+        <h1 class="tittle-text">Log In</h1>
+
+        
+
+        <form method="post" class="login-form">
+          <hr>
+          {% csrf_token %}
+          {{ form }}
+          <hr>
+          <button type="submit" class="login-button">Log In</button>
+
+        </form>
+        <a href="/accounts/signup/">Registrarse</a>
+      </div>
+
+    </div>
+
+ 
+</body>
+
+</html>

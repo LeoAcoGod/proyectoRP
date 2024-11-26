@@ -1,0 +1,60 @@
+{% load static %}
+{% load pwa %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Pagina Principal{% endblock %}</title>
+  {% progressive_web_app_meta %}
+  <link rel="stylesheet" href="{% static 'chatbot.css' %}">
+  <link rel="stylesheet" href="{% static 'login.css' %}">
+  <link rel="stylesheet" href="{% static 'weather.css' %}">
+
+</head>
+
+
+<body>
+  
+    {% if user.is_authenticated %}
+
+<div class="column left">
+    <ul class="lateral-bar">
+      
+      <li>
+        <img src="{% static 'water.svg' %}" class="bar-logo">
+        <H4 class="subtittle-text">Bienvenido {{ user.username }}</H4>
+      </li>
+      
+      
+      
+      <li><a href="/chatbot/">Chatbot</a></li>
+      <li><a href="/weather/">Open Weather</a></li>
+      <li><a href="/feedback/">FeedBack</a></li>
+      <li><a href="/articles/">Articulos</a></li>
+      <li><a href="/info/">Informacion</a></li>
+      <li><a href="{% url 'password_change' %}">Password Change</a></li>
+      <li class="subtittle-text">
+        <form action="{% url 'logout' %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="logout-button">Log Out</button>
+        </form>
+      </li>
+    </ul>
+  </div>
+  <div class="column right">
+    <main class="main-container">
+    {% block content %}
+    {% endblock %}
+    </main>
+  </div>
+    {% else %}
+    <p>You are not logged in</p>
+    <p><a href="{% url 'password_reset' %}">Password Reset</a></p>
+    <p><a href="{% url 'login' %}">Log In</a></p>
+    {% endif %}
+
+   
+</body>
+
+</html>

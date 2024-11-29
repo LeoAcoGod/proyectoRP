@@ -10,9 +10,9 @@ def obtener_clima(ciudad):
         temperatura = datos['main']['temp']
         humedad = datos['main']['humidity']
         descripcion = datos['weather'][0]['description']
-        tipoLogo=logoTipe(descripcion) 
-       
-        resultados =[ciudad,descripcion,temperatura,humedad,tipoLogo]
+        tipoLogo = logoTipe(descripcion) 
+        comentarioE = obtenerResClima(descripcion)
+        resultados = [ciudad,descripcion,temperatura,humedad,tipoLogo,comentarioE]
         
         return resultados
     else:
@@ -32,6 +32,21 @@ def logoTipe(descripcionL):
         
     }
     return switch.get(descripcionL, "01n")
+
+def obtenerResClima(clima):
+    switch = {
+        "clear sky": "Es recomendable regar despues de la puesta de sol",
+        "few clouds": "Es recomendable regar despues de la puesta de sol",
+        "scattered clouds": "Puede regar normalmente o esperar a que nubla mas",
+        "broken clouds": "Riegue en pequeñas cantidades o espere a que llueva",
+        "shower rain": "No es recomendable regar",
+        "rain": "La lluvia es importante para el crecimiento natural",
+        "thunderstorm": "Resguarde plantas pequeñas en interiores",
+        "snow": "Resguarde plantas pequeñas en interiores",
+        "mist": "Resguarde plantas pequeñas en interiores",
+        
+    }
+    return switch.get(clima, "01n")
 
 #consola
 #ciudad = "Tezontepec de Aldama"

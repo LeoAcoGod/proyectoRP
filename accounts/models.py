@@ -6,5 +6,8 @@ class Feedback(models.Model):
     nombre = models.CharField(max_length=100)
     email = models.EmailField()
     mensaje = models.TextField()
-
     fecha = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        managed = False
+        db_table = "accounts_feedback"

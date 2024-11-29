@@ -7,6 +7,8 @@ from TextoVoz import lectorVoz
 from django.core.cache import cache
 from django.shortcuts import redirect
 from .forms import FeedbackForm
+from OpenWeather import checCon
+
 
 
 def chatbot_view(request):
@@ -18,13 +20,15 @@ def chatbot_view(request):
             peticion_text = formulario.cleaned_data['texto']
             response_bot = chatbot.respuesta(peticion_text)
 
-            if not ConnectionError:
-                voiceResponse=lectorVoz.conversorTextoAVoz(response_bot)            
+            if checCon:
+                resE,comE=OWrequester.obtener_clima('Tezontepec de Aldama')
+                voiceResponse, nameAudio =lectorVoz.conversorTextoAVoz(response_bot)
+                
             else:
-                voiceResponse=response_bot
+                voiceResponse, nameAudio = response_bot,'a'
             
-            cache.clear()
-            audio_src="/static/AudioVoz.mp3"
+            
+            audio_src="/static/"+nameAudio+".mp3"
             return render(request, 'chatbot.html', {'pet': formulario,'res_bot': voiceResponse,'audio_src':audio_src })
     else:
         formulario = FormularioChatBot()
@@ -39,7 +43,7 @@ def weather_view(request):
         ciudad = "Tezontepec de Aldama"
 
 
-        if not ConnectionError:
+        if checCon:
             response_W = OWrequester.obtener_clima(ciudad)
         else:
             response_W = ['No hay conexion a internet','no es posible realizar la peticion','','','']
@@ -49,8 +53,9 @@ def weather_view(request):
         temperaturaW=response_W[2]
         humedadW=response_W[3]
         logoW=response_W[4]
-    
-        return render(request, 'weather.html', {'paisW': paisW, 'descripcionW':descripcionW, 'temperaturaW':temperaturaW, 'humedadW':humedadW, 'logoW':logoW})
+        recomendacionW=response_W[5]
+
+        return render(request, 'weather.html', {'paisW': paisW, 'descripcionW':descripcionW, 'temperaturaW':temperaturaW, 'humedadW':humedadW, 'logoW':logoW, 'recomendacionW':recomendacionW})
     else:
         formularioW = FormularioWeather()
     return render(request, 'weather.html')

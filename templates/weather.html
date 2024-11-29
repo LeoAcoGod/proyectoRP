@@ -11,9 +11,10 @@
             {% csrf_token %}
             <h2> {{ paisW }}</h2>
             <img src="https://openweathermap.org/img/wn/{{ logoW }}.png" class="description-logo">
-            <h2> {{ descripcionW }}</h2>
-            <h2> {{ temperaturaW }}</h2>
-            <h2> {{ humedadW }}</h2>
+            <p> {{ descripcionW }}</p>
+            <p> {{ temperaturaW }}</p>
+            <p> {{ humedadW }}</p>
+            <p> {{ recomendacionW }}</p>
 
             <button type="submit" class="send-water"></button>
         </form>

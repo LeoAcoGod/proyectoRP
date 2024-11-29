@@ -136,7 +136,7 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 #PWA
 
 PWA_APP_NAME = "AcuaCare"
-PWA_APP_DESCRIPTION = "UNa aplicacion Web progresiva"
+PWA_APP_DESCRIPTION = "Prototipo de chatbot"
 PWA_APP_THEME_COLOR = "#007bff"
 PWA_APP_BACKGROUND_COLOR = "#ffffff"
 PWA_APP_DISPLAY = 'standalone'
@@ -155,3 +155,5 @@ PWA_APP_ICONS_APPLE = [
         'sizes': '160x160'
     }
 ]
+
+

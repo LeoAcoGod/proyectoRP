@@ -1,13 +1,14 @@
 {"intents":[
     {
         "tag": "saludo",
-        "patterns": ["hola", "qué tal", "cómo estás", "saludos"],
-        "responses": ["Hola, pregunta sobre la flora local", "Buenos dias, te resuelvo tus dudas", "un placer, en que te ayudo?"]
+        "patterns": ["hola", "que tal", "como estás", "saludos"],
+        "responses": ["Hola, pregunta sobre la flora local", "Buenos dias, te resuelvo tus dudas", "Un placer, en que te ayudo?"]
     },
     {
         "tag": "mezquite",
-        "patterns": ["dame informacion del mezquite", "que es el mezquite?"],
-        "responses": ["El nombre científico del mezquite es Prosopis glanduloso, pero también es conocido como mezquite miel, mezquite dulce, algarroba, entre otros. Se trata de un arbusto o árbol caducifolio (renueva sus hojas cada año) de pequeño tamaño, con copa abierta y extendida con ramas bajas y retorcidas.", "el mezquite no es nada exigente, este es capaz de crecer en diferentes tipos de suelos, pero siempre bien drenados, por lo que prefiere los suelos francos y arenosos. Es un arbusto que resiste suelos muy secos, crece en zonas de rusticidad"]
+        "patterns": ["dame informacion del mezquite", "que es el mezquite"],
+        "responses": ["El nombre cientifico del mezquite es Prosopis glanduloso, pero tambien es conocido como mezquite miel, mezquite dulce, algarroba, entre otros. Se trata de un arbusto o arbol caducifolio, renueva sus hojas cada año, de pequeño tamaño, con copa abierta y extendida con ramas bajas y retorcidas.",
+         "El mezquite no es nada exigente, este es capaz de crecer en diferentes tipos de suelos, pero siempre bien drenados, por lo que prefiere los suelos francos y arenosos. Es un arbusto que resiste suelos muy secos, crece en zonas de rusticidad"]
     }
 ]
 
